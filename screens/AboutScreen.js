@@ -29,16 +29,27 @@ export default function AboutScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#000', // Pure black for contrast
+    paddingHorizontal: 20,
+    paddingTop: 50,
   },
   content: {
     padding: 20,
+    backgroundColor: '#111', // Slightly lighter black for depth
+    borderRadius: 15,
+    shadowColor: '#1DA1F2',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5,
   },
   heading: {
     fontSize: 28,
     fontWeight: 'bold',
     color: 'white',
     marginBottom: 20,
+    textAlign: 'center',
+    letterSpacing: 1.2,
   },
   subheading: {
     fontSize: 22,
@@ -46,11 +57,55 @@ const styles = StyleSheet.create({
     color: '#1DA1F2',
     marginTop: 20,
     marginBottom: 10,
+    textTransform: 'uppercase',
   },
   text: {
     fontSize: 16,
     color: '#8899A6',
     lineHeight: 24,
     marginBottom: 15,
+    textAlign: 'justify',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#1DA1F2',
+    marginVertical: 20,
+    opacity: 0.5,
+  },
+  button: {
+    marginTop: 20,
+    backgroundColor: '#1DA1F2',
+    paddingVertical: 12,
+    borderRadius: 25,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+    textTransform: 'uppercase',
+  },
+  listItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
+  listBullet: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#1DA1F2',
+    marginRight: 10,
+  },
+  listItemText: {
+    fontSize: 16,
+    color: '#8899A6',
+    lineHeight: 22,
+  },
+  footerText: {
+    textAlign: 'center',
+    color: '#666',
+    marginTop: 30,
+    fontSize: 14,
   },
 });
