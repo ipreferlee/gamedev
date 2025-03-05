@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { API_ENDPOINT } from '../App'; // ✅ Corrected Import
+import { StackActions } from '@react-navigation/native';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -13,7 +13,8 @@ const LoginScreen = ({ navigation }) => {
     const checkLogin = async () => {
       const token = await AsyncStorage.getItem('token');
       if (token) {
-        navigation.replace('Home'); // ✅ Ensure 'Home' exists in navigation
+        navigation.navigate("MainTabs");
+        // ✅ Ensure 'Home' exists in navigation
       }
     };
     checkLogin();
@@ -21,14 +22,16 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${API_ENDPOINT}/auth/login`, { 
+      const response = await axios.post(`https://backend-8-br78.onrender.com/api/auth/login`, { 
         username, 
         password 
       });
-
+  
       await AsyncStorage.setItem('token', JSON.stringify(response.data.token));
       setError('');
-      navigation.replace('Home'); // ✅ Navigate correctly
+  
+      // Use StackActions.replace for better transition
+      navigation.dispatch(StackActions.replace("MainTabs"));
     } catch (error) {
       setError('Invalid username or password');
       Alert.alert('Login Failed', 'Invalid username or password');
